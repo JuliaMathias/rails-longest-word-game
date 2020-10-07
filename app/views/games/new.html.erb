@@ -1,0 +1,7 @@
+<h1>New Game</h1>
+<% 10.times  { @grid << @letters.sample } %>
+<ul>
+  <% @grid.each do |letter| %>
+    <li><%= letter.capitalize %></li>
+  <% end %>
+</ul>
