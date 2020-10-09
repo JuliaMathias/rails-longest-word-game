@@ -1,0 +1,11 @@
+<h1>Result</h1>
+<% if @in_grid %>
+  <% if @english_word %>
+    <p><strong>Congratulations!</strong> <%= @attempt %> is a valid English word!</p>
+  <% else %>
+    <p>Sorry but <strong><%= @attempt %></strong> does not seem to be a valid English word...</p>
+  <% end %>
+<% else %>
+  <p>Sorry but <strong><%= @attempt %></strong> can't be built out of <%= @grid_to_string %></p>
+<% end %>
+<%= link_to "Play Again", new_path %>

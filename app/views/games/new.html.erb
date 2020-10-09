@@ -1,23 +1,22 @@
 <h1>New Game</h1>
-
-<div>
+<div class="mt-3">
   <% 10.times  { @grid << @letters.sample } %>
   <ul class="list-group list-group-horizontal">
     <% @grid.each do |letter| %>
-      <li class="btn btn-primary mr-2"><%= letter.capitalize %></li>
+    <li class="btn btn-primary mr-2"><%= letter.capitalize %></li>
     <% end %>
   </ul>
 </div>
-
 <div class="mt-5">
   <p class="mb-2">What is the longest word you can find?</p>
   <form action="/score" method="post">
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" name="answer" value="<%= params[:answer] %>">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Play</button>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" name="answer" value="<%= params[:answer] %>">
+      <%= hidden_field_tag :grid, @grid %>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Play</button>
+      </div>
     </div>
-  </div>
-</form>
-<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
 </div>
